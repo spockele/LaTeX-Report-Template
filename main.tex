@@ -1,0 +1,149 @@
+\documentclass[a4paper]{article}
+
+%%%%%%%% CREATE DOCUMENT STRUCTURE %%%%%%%%
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{rotating}
+\usepackage{makecell}
+\usepackage{boldline}
+\usepackage{lscape}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{sectsty}
+\usepackage{float}
+\usepackage{titling} 
+\usepackage{blindtext}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{nomencl}
+\usepackage{natbib}
+
+% Proper figure & equation numbering
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{equation}{section}
+\counterwithin{table}{section}
+
+%For thicc lines 
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+\renewcommand{\familydefault}{\sfdefault}
+
+%Set dotfill spacing
+\makeatletter
+\renewcommand \dotfill {\leavevmode \cleaders \hb@xt@ .66em{\hss .\hss }\hfill \kern \z@}
+\makeatother
+
+%%%%%%%% DOCUMENT %%%%%%%%
+\begin{document}
+
+%%%% Title Page
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 							% horizontal line and its thickness
+\center 
+ 
+% University
+\textsc{\LARGE Delft University of Technology}\\[1cm]
+
+% Document info
+\textsc{\Large --Assignment Name--}\\[0.2cm]
+\textsc{\large --Group Name--}\\[1cm] % Course Code
+\HRule \\[0.8cm]
+{ \huge \bfseries --Title--}\\[0.7cm]								% Assignment
+\HRule \\[2cm]
+\large
+\center
+\emph{Authors:}\\[0.5cm]
+--Author (student number)--\\
+
+\vfill
+%\includegraphics[width=0.4\textwidth]{Figures/--Logo Name--}
+\includegraphics[width=0.6\textwidth]{Figures/TU_delft_logo.jpg}\\[1cm] 	% University logo
+\vfill 
+\end{titlepage}
+
+\pagenumbering{roman}
+
+%%%% PREFACE
+\newpage
+\addcontentsline{toc}{section}{Preface}
+\input{Report/Preface.tex}
+
+%%%% SUMMARY
+\newpage
+\addcontentsline{toc}{section}{Summary}
+\input{Report/Summary.tex}
+
+%%%% TABLE OF CONTENTS
+\newpage
+\tableofcontents
+
+%%%% Lists
+\newpage
+
+%%%% Lists
+\addcontentsline{toc}{section}{List of Symbols}
+\makenomenclature
+\renewcommand{\nomname}{List of Symbols}
+\newcommand{\nomunit}[1]{%
+\renewcommand{\nomentryend}{\dotfill#1}}
+\printnomenclature[1.2cm]
+
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
+
+\listoftables
+\addcontentsline{toc}{section}{List of Tables}
+
+%%%% SECTIONS
+\newpage
+\input{Report/Introduction.tex}
+\pagenumbering{arabic}
+
+\newpage
+\input{Report/Conclusion.tex}
+
+\newpage
+\input{Report/Recommendations.tex}
+%%%% REFERENCES / BIBLIOGRAPHY
+\newpage
+\bibliographystyle{apa-good}
+\bibliography{references}
+\addcontentsline{toc}{section}{References}
+
+%%%% APPENDICES
+\newpage
+\input{Appendices/AppendixA.tex}
+\addcontentsline{toc}{section}{Appendix A}
+
+\end{document}
+
+%%%%%%%% EXTRA TIPS %%%%%%%%
+%% hou deze structuur aan voor afbeeldingen
+%%\begin{figure}[H]
+%%\includegraphics[]{Pendulum.jpg}
+%%\caption{Sketch of the pendulum}
+%%\label{fig:pendulum}
+%%\end{figure}
+
+%\nomenclature{c}{speed of light   
+%    \nomunit{[m/s]}}
